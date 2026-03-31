@@ -1,25 +1,18 @@
-CC = i686-elf-gcc
 AS = nasm
 EMU = qemu-system-i386
 
-CFLAGS = -ffreestanding -O2 -Wall -Wextra
-LDFLAGS = -T linker.ld -ffreestanding -O2 -nostdlib
+TARGET = myos.bin
 
-OBJS = boot.o kernel.o
+all: $(TARGET)
 
-all: myos.bin
+boot.bin: boot.s
+	$(AS) -f bin boot.s -o boot.bin
 
-boot.o: boot.s
-	$(AS) -f elf32 boot.s -o boot.o
+$(TARGET): boot.bin
+	cp boot.bin $(TARGET)
 
-kernel.o: kernel.c
-	$(CC) -c kernel.c -o kernel.o $(CFLAGS)
-
-myos.bin: $(OBJS)
-	$(CC) $(LDFLAGS) -o myos.bin $(OBJS)
-
-run: myos.bin
-	$(EMU) -kernel $(TARGET)
+run: $(TARGET)
+	$(EMU) -drive format=raw,file=$(TARGET)
 
 clean:
-	rm -f *.o myos.bin
+	rm -f *.bin $(TARGET)
