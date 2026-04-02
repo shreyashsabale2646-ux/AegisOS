@@ -7,6 +7,15 @@ mov dh, 1
 mov dl, [BOOT_DRIVE]
 call disk_load
 
+; disable interrupts
+cli
+
+; simple protected mode prep
+mov eax, cr0
+or eax, 0x1
+mov cr0, eax
+
+; jump to kernel (may not fully work yet)
 jmp 0x1000
 
 jmp $
