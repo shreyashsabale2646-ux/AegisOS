@@ -1,3 +1,4 @@
+#include "src/memory/heap.h"
 #include "src/cpu/gdt.h"
 #include "src/cpu/idt.h"
 #include "drivers/screen.h"
@@ -11,4 +12,7 @@ void kernel_main() {
     print_string("Boot Successful\n\n");
 
     print_string("Welcome to AegisOS  Kernel");
+
+    int* x = (int*) kmalloc(4);
+    *x = 123;
 }
