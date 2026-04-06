@@ -1,3 +1,4 @@
+#include "src/cpu/timer.h"
 #include "src/memory/heap.h"
 #include "src/cpu/gdt.h"
 #include "src/cpu/idt.h"
@@ -60,6 +61,7 @@ void shell() {
 void kernel_main() {
     init_gdt();
     init_idt();
+    init_timer();
     clear_screen();
 
     print_string("AegisOS v1.0\n");

@@ -13,7 +13,8 @@ all:
 	$(CC) $(CFLAGS) src/cpu/gdt.c -o gdt.o
 	$(CC) $(CFLAGS) src/memory/heap.c -o heap.o
 	$(CC) $(CFLAGS) keyboard.c -o keyboard.o
-	$(LD) $(LDFLAGS) kernel_entry.o kernel.o screen.o idt.o gdt.o heap.o keyboard.o -o kernel.bin
+	$(CC) $(CFLAGS) src/cpu/timer.c -o timer.o
+	$(LD) $(LDFLAGS) kernel_entry.o kernel.o screen.o idt.o gdt.o heap.o keyboard.o timer.o -o kernel.bin
 	cat boot.bin kernel.bin > os.bin
 
 run: all
