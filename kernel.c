@@ -1,3 +1,4 @@
+#include "src/scheduler/task.h"
 #include "src/cpu/timer.h"
 #include "src/memory/heap.h"
 #include "src/cpu/gdt.h"
@@ -7,12 +8,11 @@
 
 // ================== STRING COMPARE ==================
 int strcmp(char *a, char *b) {
-    int i = 0;
-    while (a[i] && b[i]) {
-        if (a[i] != b[i]) return 0;
-        i++;
+    while (*a && (*a == *b)) {
+        a++;
+        b++;
     }
-    return a[i] == b[i];
+    return *a - *b;
 }
 
 // ================== SHELL ==================
@@ -28,17 +28,17 @@ void shell() {
         if (c == '\n') {
             cmd[i] = 0;
 
-            if (strcmp(cmd, "help")) {
+            if (strcmp(cmd, "help") == 0) {
                 print_string("\nCommands: help clear mem task");
             }
-            else if (strcmp(cmd, "clear")) {
+            else if (strcmp(cmd, "clear") == 0) {
                 clear_screen();
             }
-            else if (strcmp(cmd, "mem")) {
+            else if (strcmp(cmd, "mem") == 0) {
                 print_string("\nMemory OK");
             }
-            else if (strcmp(cmd, "task")) {
-                print_string("\nTask running");
+            else if (strcmp(cmd, "task") == 0) {
+                run_tasks();
             }
             else {
                 print_string("\nUnknown command");
