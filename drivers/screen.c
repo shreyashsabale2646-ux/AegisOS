@@ -10,6 +10,21 @@ void print_char(char c) {
         video[cursor * 2 + 1] = 0x07;
         cursor++;
     }
+
+// scrolling
+    if (cursor >= 80 * 25) {
+        for (int i = 0; i < 80 * 24; i++) {
+            video[i * 2] = video[(i + 80) * 2];
+            video[i * 2 + 1] = 0x07;
+        }
+
+        for (int i = 80 * 24; i < 80 * 25; i++) {
+            video[i * 2] = ' ';
+            video[i * 2 + 1] = 0x07;
+        }
+
+        cursor = 80 * 24;
+    }
 }
 
 void print_string(char *str) {
