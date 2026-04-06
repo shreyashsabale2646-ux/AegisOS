@@ -1,7 +1,9 @@
+#include "src/cpu/gdt.h"
 #include "src/cpu/idt.h"
 #include "drivers/screen.h"
 
 void kernel_main() {
+    init_gdt();
     init_idt();
     clear_screen();
 

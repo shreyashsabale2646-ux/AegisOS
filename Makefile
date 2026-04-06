@@ -10,7 +10,8 @@ all:
 	$(CC) $(CFLAGS) kernel.c -o kernel.o
 	$(CC) $(CFLAGS) drivers/screen.c -o screen.o
 	$(CC) $(CFLAGS) src/cpu/idt.c -o idt.o
-	$(LD) $(LDFLAGS) kernel_entry.o kernel.o screen.o idt.o -o kernel.bin
+	$(CC) $(CFLAGS) src/cpu/gdt.c -o gdt.o
+	$(LD) $(LDFLAGS) kernel_entry.o kernel.o screen.o idt.o gdt.o -o kernel.bin
 	cat boot.bin kernel.bin > os.bin
 
 run: all
