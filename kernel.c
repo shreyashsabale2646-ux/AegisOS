@@ -1,3 +1,4 @@
+#include "src/fs/fs.h"
 #include "src/memory/paging.h"
 #include "src/scheduler/task.h"
 #include "src/cpu/timer.h"
@@ -40,6 +41,9 @@ void shell() {
             }
             else if (strcmp(cmd, "task") == 0) {
                 run_tasks();
+            }
+            else if (strcmp(cmd, "ls") == 0) {
+                list_files();
             }
             else {
                 print_string("\nUnknown command");
