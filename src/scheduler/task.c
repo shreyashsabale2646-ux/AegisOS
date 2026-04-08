@@ -8,7 +8,7 @@ void task2() {
 }
 
 void run_tasks() {
-    while (1) {
+    for (int k=0 ;k<5;k++) {
         task1();
 
         for (int i = 0; i < 10000000; i++);
@@ -17,4 +17,5 @@ void run_tasks() {
 
         for (int i = 0; i < 10000000; i++);
     }
+print_string("\nTasks completed\n");
 }
