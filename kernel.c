@@ -45,6 +45,12 @@ void shell() {
             else if (strcmp(cmd, "ls") == 0) {
                 list_files();
             }
+	    else if (strcmp(cmd, "about")) {
+    print_string("\nAegisOS by tean Aegis");
+}
+else if (strcmp(cmd, "version")) {
+    print_string("\nAegisOS v1.0");
+}
             else {
                 print_string("\nUnknown command");
             }
