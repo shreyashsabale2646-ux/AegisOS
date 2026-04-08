@@ -31,7 +31,7 @@ void shell() {
             cmd[i] = 0;
 
             if (strcmp(cmd, "help") == 0) {
-                print_string("\nCommands: help clear mem task");
+                print_string("\nCommands: help clear mem task ls about version");
             }
             else if (strcmp(cmd, "clear") == 0) {
                 clear_screen();
