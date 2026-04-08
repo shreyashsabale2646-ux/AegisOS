@@ -1,7 +1,7 @@
 CC = gcc
 LD = ld
 
-CFLAGS = -m32 -ffreestanding -fno-pie -fno-pic -c
+CFLAGS = -m32 -ffreestanding -fno-pie -fno-pic -I. -c
 LDFLAGS = -m elf_i386 -T linker.ld --oformat binary -nostdlib
 
 all:
