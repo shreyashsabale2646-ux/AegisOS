@@ -1,3 +1,4 @@
+#include "src/memory/paging.h"
 #include "src/scheduler/task.h"
 #include "src/cpu/timer.h"
 #include "src/memory/heap.h"
@@ -59,6 +60,7 @@ void shell() {
 // ================== KERNEL ENTRY ==================
 
 void kernel_main() {
+    init_paging();
     init_gdt();
     init_idt();
     init_timer();
