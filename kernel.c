@@ -78,6 +78,7 @@ void kernel_main() {
 
     print_string("AegisOS v1.0\n");
     print_string("Boot Successful\n\n");
+    print_string("System initialized successfully\n");
 
     print_string("Welcome to AegisOS  Kernel");
 
