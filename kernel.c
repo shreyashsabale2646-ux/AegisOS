@@ -19,7 +19,7 @@ int strcmp(char *a, char *b) {
 
 // ================== SHELL ==================
 void shell() {
-    print_string("\n> ");
+    print_string("\n[AegisOS] > ");
 
     char cmd[20];
     int i = 0;
@@ -56,7 +56,7 @@ else if (strcmp(cmd, "version")) {
             }
 
             i = 0;
-            print_string("\n> ");
+            print_string("\n[AegisOS]> ");
         } 
         else {
             if (c != 0 && i < 19) {   // prevent overflow + ignore invalid
